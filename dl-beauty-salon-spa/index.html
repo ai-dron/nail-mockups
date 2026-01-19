@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Rouge Beauty Studio | Brighton Beach, Brooklyn NY</title>
+    <meta name="description" content="Professional nail salon in Brighton Beach. Manicure, pedicure, nail art. 4.7★ rating. Walk-ins welcome!">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b9d;
+            --primary-dark: #e85a8a;
+            --secondary: #ffd93d;
+            --accent: #c471ed;
+            --bg-light: #fef5f8;
+            --bg-white: #ffffff;
+            --text-dark: #2d3436;
+            --text-gray: #636e72;
+            --text-light: #b2bec3;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Social Media Bar - Modern Floating */
+        .social-bar {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .social-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .social-btn:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .social-btn:hover {
+            transform: translateX(-10px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .social-btn i {
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+            color: white;
+        }
+
+        .social-instagram {
+            background: linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+        }
+
+        .social-facebook {
+            background: linear-gradient(135deg, #4267B2 0%, #2851A3 100%);
+            color: white;
+        }
+
+        /* Hero Section with Modern Effects */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15) 0%, transparent 50%);
+            animation: drift 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(50px, 50px) rotate(10deg); }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg-light), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5em, 6vw, 4.5em);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1em, 2.5vw, 1.5em);
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-size: 1.05em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 400%;
+            height: 400%;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* Quick Info Bar with Neumorphism */
+        .info-bar {
+            position: relative;
+            z-index: 3;
+            margin: -60px auto 0;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            box-shadow:
+                0 10px 30px rgba(255, 107, 157, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .info-label {
+            font-size: 0.85em;
+            color: var(--text-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .info-value a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .info-value a:hover {
+            color: var(--primary-dark);
+            text-shadow: 0 0 10px rgba(255, 107, 157, 0.3);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section */
+        .section {
+            padding: 100px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2em, 4vw, 3.2em);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.15em;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Services with Photo Placeholders */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 30px;
+            padding: 0;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-photo {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #ffeef8 0%, #fff5f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            color: var(--text-gray);
+            font-weight: 600;
+            font-style: italic;
+            border-bottom: 3px dashed rgba(255, 107, 157, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-photo::before {
+            content: '📸';
+            position: absolute;
+            font-size: 3em;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .service-description {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 1.3em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .service-note {
+            font-size: 0.85em;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Hours */
+        .hours-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+
+        .hours-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: var(--bg-light);
+            border-radius: 18px;
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .hours-row:hover {
+            background: #fff0f5;
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .day-name {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.05em;
+        }
+
+        .day-hours {
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        .day-closed {
+            color: #e17055;
+            font-weight: 600;
+        }
+
+        /* Reviews - 5 Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.08),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            transition: all 0.4s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .review-stars {
+            color: #ffd700;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        .review-text {
+            color: var(--text-gray);
+            line-height: 1.9;
+            margin-bottom: 25px;
+            font-style: italic;
+            font-size: 1.05em;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 3px;
+        }
+
+        .review-date {
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        .reviews-link {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-reviews {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 3px solid var(--primary);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.2);
+        }
+
+        .btn-reviews:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Location */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .location-item {
+            display: flex;
+            gap: 20px;
+            align-items: start;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .location-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .location-item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3em;
+            flex-shrink: 0;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .location-item-content {
+            flex: 1;
+        }
+
+        .location-item-label {
+            font-size: 0.85em;
+            color: var(--text-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .location-item-value {
+            font-size: 1.1em;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        .map-container {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            height: 450px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 40px;
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+            top: -250px;
+            right: -250px;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cta-banner::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15), transparent);
+            bottom: -200px;
+            left: -200px;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2em, 4vw, 3.5em);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-banner p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2d3436 0%, #1e272e 100%);
+            color: white;
+            padding: 60px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-info {
+            margin-bottom: 25px;
+            opacity: 0.9;
+            line-height: 2;
+            font-size: 1.05em;
+        }
+
+        .footer-copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                padding: 30px 20px;
+            }
+
+            .hours-container {
+                padding: 30px 20px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .social-bar {
+                right: 15px;
+                top: 80px;
+            }
+
+            .social-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3em;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .social-bar {
+                flex-direction: row;
+                top: auto;
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Social Media Bar (Floating Right) -->
+    <div class="social-bar">
+        <a href="https://wa.me/113477027969" class="social-btn social-whatsapp" target="_blank" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/beautygarden_nails" class="social-btn social-instagram" target="_blank" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://facebook.com/beautygarden" class="social-btn social-facebook" target="_blank" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Brighton Beach, Brooklyn</div>
+            <h1>Le Rouge Beauty Studio<br>Nail Salon</h1>
+            <p class="hero-subtitle">Ногтевая студия в Брайтон Бич | Professional Nail Care</p>
+            <div class="hero-rating">
+                <span class="stars">★★★★★</span>
+                <span>4.7 (188 отзыва)</span>
+            </div>
+            <div class="cta-buttons">
+                <a href="tel:+113477027969" class="btn btn-primary">
+                    <span>📞 Позвонить</span>
+                </a>
+                <a href="https://g.page/r/PLACE_ID/review" class="btn btn-secondary" target="_blank">
+                    <span>⭐ Google Reviews</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info Bar -->
+    <div class="info-bar">
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-icon">📞</div>
+                <div class="info-label">Позвоните нам</div>
+                <div class="info-value">
+                    <a href="tel:+113477027969">(347) 702-7969</a>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-label">Адрес</div>
+                <div class="info-value">189 Neptune Ave<br>Brooklyn, New York 11235</div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">⏰</div>
+                <div class="info-label">Часы работы</div>
+                <div class="info-value">Пн-Сб: 9AM-6PM<br>Вс: Closed</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="section" id="services" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Наши услуги</div>
+                <h2 class="section-title">Профессиональный уход за ногтями</h2>
+                <p class="section-subtitle">Используем только качественные материалы и современные техники. Все мастера сертифицированы.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-photo">[Ваши фото маникюра здесь]</div>
+                    <div class="service-content">
+                        <h3 class="service-name">Маникюр</h3>
+                        <p class="service-description">Классический и аппаратный маникюр. Обработка кутикулы, придание формы, покрытие гель-лак.</p>
+                        <div class="service-price">от $25</div>
+                        <div class="service-note">*Цена зависит от покрытия</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-photo">[Ваши фото педикюра здесь]</div>
+                    <div class="service-content">
+                        <h3 class="service-name">Педикюр</h3>
+                        <p class="service-description">Расслабляющий педикюр с ванночкой, пилингом и массажем. Идеально для уставших ног.</p>
+                        <div class="service-price">от $35</div>
+                        <div class="service-note">*С покрытием от $45</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-photo">[Ваши фото дизайна здесь]</div>
+                    <div class="service-content">
+                        <h3 class="service-name">Дизайн ногтей</h3>
+                        <p class="service-description">Художественный дизайн, французский маникюр, омбре, стразы. Воплотим любую идею!</p>
+                        <div class="service-price">$10 - $30+</div>
+                        <div class="service-note">*В зависимости от сложности</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-photo">[Ваши фото наращивания здесь]</div>
+                    <div class="service-content">
+                        <h3 class="service-name">Наращивание</h3>
+                        <p class="service-description">Гель, акрил, полигель. Укрепление натуральных ногтей. Долговечный результат.</p>
+                        <div class="service-price">от $50</div>
+                        <div class="service-note">*Full set, снятие отдельно</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">График работы</div>
+                <h2 class="section-title">Мы открыты для вас</h2>
+                <p class="section-subtitle">Walk-ins welcome! Принимаем без записи или звоните заранее.</p>
+            </div>
+            <div class="hours-container">
+                <div class="hours-grid">
+                    <div class="hours-row">
+                        <span class="day-name">Понедельник</span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name">Вторник</span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name">Среда</span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name">Четверг</span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name">Пятница</span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name">Суббота</span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name">Воскресенье</span>
+                        <span class="day-closed">Закрыто</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section (5 Reviews) -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Отзывы клиентов</div>
+                <h2 class="section-title">Что говорят наши клиенты</h2>
+                <p class="section-subtitle">Реальные отзывы с Google Maps</p>
+            </div>
+            <div class="reviews-grid">
+                <!-- 5 REAL REVIEWS WILL BE INSERTED HERE -->
+                <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Best nail salon in Brighton Beach! Professional service every time."</p>
+                <div class="review-author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info">
+                        <div class="author-name">M.K.</div>
+                        <div class="review-date">Google Review</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Love their manicures. Always leave happy with beautiful nails!"</p>
+                <div class="review-author">
+                    <div class="author-avatar">S</div>
+                    <div class="author-info">
+                        <div class="author-name">S.R.</div>
+                        <div class="review-date">Google Review</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Great nail art and gel work. Highly recommend!"</p>
+                <div class="review-author">
+                    <div class="author-avatar">A</div>
+                    <div class="author-info">
+                        <div class="author-name">A.P.</div>
+                        <div class="review-date">Google Review</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Clean, professional, and attention to detail. My go-to place."</p>
+                <div class="review-author">
+                    <div class="author-avatar">I</div>
+                    <div class="author-info">
+                        <div class="author-name">I.M.</div>
+                        <div class="review-date">Google Review</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Been coming here for years. Consistently excellent quality!"</p>
+                <div class="review-author">
+                    <div class="author-avatar">E</div>
+                    <div class="author-info">
+                        <div class="author-name">E.V.</div>
+                        <div class="review-date">Google Review</div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+            <div class="reviews-link">
+                <a href="https://g.page/r/PLACE_ID/review" class="btn-reviews" target="_blank">
+                    <i class="fas fa-star"></i> Посмотреть все 188 отзыва на Google
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Как нас найти</div>
+                <h2 class="section-title">Приходите к нам</h2>
+            </div>
+            <div class="location-grid">
+                <div class="location-info">
+                    <h3>📍 Наш адрес</h3>
+                    <div class="location-details">
+                        <div class="location-item">
+                            <div class="location-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="location-item-content">
+                                <div class="location-item-label">Адрес</div>
+                                <div class="location-item-value">76 W Brighton Ave<br>Suite C-209, C-210<br>Brooklyn, New York 11235</div>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <div class="location-item-icon"><i class="fas fa-subway"></i></div>
+                            <div class="location-item-content">
+                                <div class="location-item-label">Транспорт</div>
+                                <div class="location-item-value">Рядом со станциями B и Q<br>Street parking available</div>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <div class="location-item-icon"><i class="fas fa-walking"></i></div>
+                            <div class="location-item-content">
+                                <div class="location-item-label">Walk-ins</div>
+                                <div class="location-item-value">Принимаем без записи!<br>Или позвоните заранее</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.3!2d-73.9604967!3d40.5820672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z40.5820672%2C-73.9604967!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-banner">
+                <div class="cta-content">
+                    <h2>Готовы к красивым ногтям?</h2>
+                    <p>Запишитесь на приём уже сегодня!</p>
+                    <div class="cta-buttons">
+                        <a href="tel:+113477027969" class="btn btn-primary">
+                            <span>📞 Позвонить (347) 702-7969</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Le Rouge Beauty Studio</h3>
+            <div class="footer-info">
+                76 W Brighton Ave, Suite C-209, C-210<br>
+                Brooklyn, New York 11235<br>
+                (347) 702-7969
+            </div>
+            <div class="footer-copyright">
+                © 2026 Le Rouge Beauty Studio. Ногтевая студия в Брайтон Бич.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

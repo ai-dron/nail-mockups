@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistar Nail & Spa | Brighton Beach, Brooklyn NY</title>
+    <meta name="description" content="Профессиональный nail салон в Брайтон Бич. Маникюр, педикюр, nail art. 4.4★ рейтинг. Walk-ins welcome!">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b9d;
+            --primary-dark: #e85a8a;
+            --secondary: #ffd93d;
+            --accent: #c471ed;
+            --bg-light: #fef5f8;
+            --bg-white: #ffffff;
+            --text-dark: #2d3436;
+            --text-gray: #636e72;
+            --text-light: #b2bec3;
+            --gold: #d4af37;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 5px;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            color: var(--text-gray);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: var(--bg-light);
+            color: var(--primary);
+        }
+
+        [data-lang="en"] { display: none; }
+        body.lang-en [data-lang="en"] { display: block; }
+        body.lang-en [data-lang="ru"] { display: none; }
+        span[data-lang="en"], a[data-lang="en"] { display: none; }
+        body.lang-en span[data-lang="en"], body.lang-en a[data-lang="en"] { display: inline; }
+        body.lang-en span[data-lang="ru"], body.lang-en a[data-lang="ru"] { display: none; }
+
+        /* Social Media Bar */
+        .social-bar {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .social-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn:hover {
+            transform: translateX(-10px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .social-whatsapp { background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%); color: white; }
+        .social-instagram { background: linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: white; }
+        .social-facebook { background: linear-gradient(135deg, #4267B2 0%, #2851A3 100%); color: white; }
+
+        /* Hero Section with Video */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 50%, rgba(240, 147, 251, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg-light), transparent);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.95em;
+            font-weight: 500;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-badge i { margin-right: 8px; color: var(--gold); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3em, 7vw, 5.5em);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 span {
+            display: block;
+            font-size: 0.5em;
+            font-weight: 400;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1em, 2.5vw, 1.5em);
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 35px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 18px 35px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 45px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stars { color: #ffd700; font-size: 1.3em; letter-spacing: 3px; }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, var(--gold) 0%, #f0c14b 100%);
+            color: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-book:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            color: white;
+            font-size: 2em;
+            animation: bounce 2s infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+        }
+
+        /* Stats Section */
+        .stats-section {
+            position: relative;
+            z-index: 5;
+            margin-top: -80px;
+            padding: 0 20px;
+        }
+
+        .stats-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: white;
+            border-radius: 30px;
+            padding: 50px 30px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.12);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border-right: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.95em;
+            color: var(--text-gray);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Info Bar */
+        .info-bar {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding: 0 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .info-item:hover { transform: translateY(-5px); }
+
+        .info-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .info-label {
+            font-size: 0.85em;
+            color: var(--text-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .info-value a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Container & Section */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.85em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2em, 4vw, 3.5em);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.2em;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 1px solid rgba(0,0,0,0.05);
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.18);
+        }
+
+        .service-photo {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-photo img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 35px;
+        }
+
+        .service-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .service-description {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 1.4em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .service-note {
+            font-size: 0.85em;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-section .section-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .team-section .section-title,
+        .team-section .section-subtitle { color: white; }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .team-card:hover .team-photo img {
+            transform: scale(1.08);
+        }
+
+        .team-info {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .team-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        .team-exp {
+            font-size: 0.9em;
+            color: var(--text-gray);
+        }
+
+        /* Gallery */
+        .gallery-section {
+            background: var(--bg-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Before/After */
+        .beforeafter-section {
+            background: white;
+        }
+
+        .beforeafter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .beforeafter-item {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+
+        .beforeafter-slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            cursor: ew-resize;
+        }
+
+        .beforeafter-slider img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .beforeafter-slider .after-img {
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .beforeafter-slider .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: white;
+            cursor: ew-resize;
+            z-index: 10;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .slider-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .slider-handle::after {
+            content: '⟷';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5em;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .beforeafter-labels {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 5;
+        }
+
+        .beforeafter-label {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        /* Hours */
+        .hours-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .hours-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: var(--bg-light);
+            border-radius: 18px;
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .hours-row:hover {
+            background: #fff0f5;
+            transform: translateX(10px);
+        }
+
+        .day-name {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .day-hours {
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        .day-closed {
+            color: #e17055;
+            font-weight: 600;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 6em;
+            font-family: 'Playfair Display', serif;
+            color: var(--bg-light);
+            line-height: 1;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .review-stars {
+            color: #ffd700;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .review-text {
+            color: var(--text-gray);
+            line-height: 1.9;
+            margin-bottom: 25px;
+            font-style: italic;
+            font-size: 1.1em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3em;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 3px;
+        }
+
+        .review-date {
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        .reviews-link {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-reviews {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 3px solid var(--primary);
+            transition: all 0.4s ease;
+        }
+
+        .btn-reviews:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Location */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .location-item {
+            display: flex;
+            gap: 20px;
+            align-items: start;
+            padding: 25px;
+            background: white;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+
+        .location-item:hover {
+            transform: translateX(10px);
+        }
+
+        .location-item-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4em;
+            flex-shrink: 0;
+        }
+
+        .location-item-label {
+            font-size: 0.85em;
+            color: var(--text-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .location-item-value {
+            font-size: 1.1em;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        .map-container {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+            height: 450px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 40px;
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2em, 5vw, 4em);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-banner p {
+            font-size: 1.4em;
+            margin-bottom: 45px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2d3436 0%, #1e272e 100%);
+            color: white;
+            padding: 80px 20px 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-column h4 {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        /* Booking Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            animation: modalIn 0.4s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--bg-light);
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .modal p {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .modal-form input,
+        .modal-form select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-size: 1em;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .modal-form input:focus,
+        .modal-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .modal-form button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
+            .stat-item:nth-child(2n) { border-left: 1px solid rgba(0,0,0,0.08); }
+            .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-social { justify-content: center; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 968px) {
+            .location-grid { grid-template-columns: 1fr; }
+            .section { padding: 70px 20px; }
+            .social-bar { right: 15px; top: 80px; }
+            .social-btn { width: 50px; height: 50px; font-size: 1.3em; }
+            .lang-switcher { top: 10px; left: 10px; }
+            .beforeafter-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .cta-buttons { flex-direction: column; align-items: stretch; }
+            .btn { width: 100%; justify-content: center; }
+            .social-bar { flex-direction: row; top: auto; bottom: 20px; right: 50%; transform: translateX(50%); }
+            .stats-grid { grid-template-columns: 1fr; padding: 30px 20px; }
+            .stat-item { border: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
+            .stat-item:last-child { border-bottom: none; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+            .modal { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('ru')" id="btn-ru">RU</button>
+        <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
+
+    <!-- Social Media Bar -->
+    <div class="social-bar">
+        <a href="https://wa.me/117184266066" class="social-btn social-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/beautygarden_nails" class="social-btn social-instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com/beautygarden" class="social-btn social-facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1920">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-doing-her-nails-at-a-beauty-salon-42748-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-badge">
+                <i class="fas fa-crown"></i> Premium Nail Salon
+            </div>
+            <h1>Sistar Nail & Spa<span>Nail Salon</span></h1>
+            <p class="hero-subtitle">
+                <span data-lang="ru">Искусство красоты в каждой детали</span>
+                <span data-lang="en">The Art of Beauty in Every Detail</span>
+            </p>
+            <div class="hero-rating">
+                <span class="stars">★★★★★</span>
+                <span>
+                    <span data-lang="ru">4.4 (35 отзыва на Google)</span>
+                    <span data-lang="en">4.4 (35 Google reviews)</span>
+                </span>
+            </div>
+            <div class="cta-buttons">
+                <button class="btn btn-book" onclick="openModal()">
+                    <i class="fas fa-calendar-check"></i>
+                    <span data-lang="ru">Записаться онлайн</span>
+                    <span data-lang="en">Book Online</span>
+                </button>
+                <a href="tel:+117184266066" class="btn btn-primary">
+                    <i class="fas fa-phone"></i>
+                    <span data-lang="ru">Позвонить</span>
+                    <span data-lang="en">Call Now</span>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+    </section>
+
+    <!-- Stats Counter -->
+    <div class="stats-section">
+        <div class="stats-grid" data-aos="fade-up" data-aos-duration="800">
+            <div class="stat-item">
+                <div class="stat-number" data-count="500">0</div>
+                <div class="stat-label">
+                    <span data-lang="ru">Довольных клиентов</span>
+                    <span data-lang="en">Happy Clients</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="5">0</div>
+                <div class="stat-label">
+                    <span data-lang="ru">Лет опыта</span>
+                    <span data-lang="en">Years Experience</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="15">0</div>
+                <div class="stat-label">
+                    <span data-lang="ru">Видов услуг</span>
+                    <span data-lang="en">Services</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="100">0</div>
+                <div class="stat-label">
+                    <span data-lang="ru">% Качество</span>
+                    <span data-lang="en">% Quality</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Info Bar -->
+    <div class="info-bar">
+        <div class="info-grid" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="info-label">
+                    <span data-lang="ru">Телефон</span>
+                    <span data-lang="en">Call Us</span>
+                </div>
+                <div class="info-value"><a href="tel:+117184266066">(718) 426-6066</a></div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="info-label">
+                    <span data-lang="ru">Адрес</span>
+                    <span data-lang="en">Address</span>
+                </div>
+                <div class="info-value">93-19 37th Ave<br>Jackson Heights, New York 11372</div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-clock"></i></div>
+                <div class="info-label">
+                    <span data-lang="ru">Часы работы</span>
+                    <span data-lang="en">Hours</span>
+                </div>
+                <div class="info-value">
+                    <span data-lang="ru">Пн-Сб: 9AM-6PM<br>Вс: Закрыто</span>
+                    <span data-lang="en">Mon-Sat: 9AM-6PM<br>Sun: Closed</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="section" id="services" style="background: white;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <span data-lang="ru">Наши услуги</span>
+                    <span data-lang="en">Our Services</span>
+                </div>
+                <h2 class="section-title">
+                    <span data-lang="ru">Профессиональный уход за ногтями</span>
+                    <span data-lang="en">Professional Nail Care</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span data-lang="ru">Используем только премиальные материалы и современные техники</span>
+                    <span data-lang="en">We use only premium materials and modern techniques</span>
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-photo">
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600" alt="Manicure">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">
+                            <span data-lang="ru">Маникюр</span>
+                            <span data-lang="en">Manicure</span>
+                        </h3>
+                        <p class="service-description">
+                            <span data-lang="ru">Классический и аппаратный маникюр. Обработка кутикулы, придание формы, покрытие гель-лак.</span>
+                            <span data-lang="en">Classic and machine manicure. Cuticle care, shaping, gel polish coating.</span>
+                        </p>
+                        <div class="service-price">
+                            <span data-lang="ru">от $25</span>
+                            <span data-lang="en">from $25</span>
+                        </div>
+                        <div class="service-note">
+                            <span data-lang="ru">*Цена зависит от покрытия</span>
+                            <span data-lang="en">*Price depends on polish type</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-photo">
+                        <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600" alt="Pedicure">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">
+                            <span data-lang="ru">Педикюр</span>
+                            <span data-lang="en">Pedicure</span>
+                        </h3>
+                        <p class="service-description">
+                            <span data-lang="ru">Расслабляющий педикюр с ванночкой, пилингом и массажем. Идеально для уставших ног.</span>
+                            <span data-lang="en">Relaxing pedicure with foot bath, exfoliation and massage.</span>
+                        </p>
+                        <div class="service-price">
+                            <span data-lang="ru">от $35</span>
+                            <span data-lang="en">from $35</span>
+                        </div>
+                        <div class="service-note">
+                            <span data-lang="ru">*С покрытием от $45</span>
+                            <span data-lang="en">*With polish from $45</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-photo">
+                        <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=600" alt="Nail Art">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">
+                            <span data-lang="ru">Дизайн ногтей</span>
+                            <span data-lang="en">Nail Art</span>
+                        </h3>
+                        <p class="service-description">
+                            <span data-lang="ru">Художественный дизайн, французский маникюр, омбре, стразы.</span>
+                            <span data-lang="en">Artistic designs, French manicure, ombre, rhinestones.</span>
+                        </p>
+                        <div class="service-price">$10 - $30+</div>
+                        <div class="service-note">
+                            <span data-lang="ru">*В зависимости от сложности</span>
+                            <span data-lang="en">*Depending on complexity</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-photo">
+                        <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600" alt="Extensions">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">
+                            <span data-lang="ru">Наращивание</span>
+                            <span data-lang="en">Extensions</span>
+                        </h3>
+                        <p class="service-description">
+                            <span data-lang="ru">Гель, акрил, полигель. Укрепление натуральных ногтей.</span>
+                            <span data-lang="en">Gel, acrylic, polygel. Natural nail strengthening.</span>
+                        </p>
+                        <div class="service-price">
+                            <span data-lang="ru">от $50</span>
+                            <span data-lang="en">from $50</span>
+                        </div>
+                        <div class="service-note">
+                            <span data-lang="ru">*Full set, снятие отдельно</span>
+                            <span data-lang="en">*Full set, removal separate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <span data-lang="ru">Наша команда</span>
+                    <span data-lang="en">Our Team</span>
+                </div>
+                <h2 class="section-title">
+                    <span data-lang="ru">Познакомьтесь с мастерами</span>
+                    <span data-lang="en">Meet Our Artists</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span data-lang="ru">Профессионалы с многолетним опытом</span>
+                    <span data-lang="en">Professionals with years of experience</span>
+                </p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=500" alt="Anna">
+                    </div>
+                    <div class="team-info">
+                        <h4 class="team-name">
+                            <span data-lang="ru">Анна</span>
+                            <span data-lang="en">Anna</span>
+                        </h4>
+                        <div class="team-role">
+                            <span data-lang="ru">Старший мастер</span>
+                            <span data-lang="en">Senior Nail Artist</span>
+                        </div>
+                        <p class="team-exp">
+                            <span data-lang="ru">8 лет опыта • Nail Art</span>
+                            <span data-lang="en">8 years exp. • Nail Art</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500" alt="Maria">
+                    </div>
+                    <div class="team-info">
+                        <h4 class="team-name">
+                            <span data-lang="ru">Мария</span>
+                            <span data-lang="en">Maria</span>
+                        </h4>
+                        <div class="team-role">
+                            <span data-lang="ru">Мастер маникюра</span>
+                            <span data-lang="en">Manicure Specialist</span>
+                        </div>
+                        <p class="team-exp">
+                            <span data-lang="ru">5 лет опыта • Гель-лак</span>
+                            <span data-lang="en">5 years exp. • Gel Polish</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500" alt="Elena">
+                    </div>
+                    <div class="team-info">
+                        <h4 class="team-name">
+                            <span data-lang="ru">Елена</span>
+                            <span data-lang="en">Elena</span>
+                        </h4>
+                        <div class="team-role">
+                            <span data-lang="ru">Мастер педикюра</span>
+                            <span data-lang="en">Pedicure Specialist</span>
+                        </div>
+                        <p class="team-exp">
+                            <span data-lang="ru">6 лет опыта • СПА</span>
+                            <span data-lang="en">6 years exp. • SPA</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <span data-lang="ru">Наши работы</span>
+                    <span data-lang="en">Our Work</span>
+                </div>
+                <h2 class="section-title">
+                    <span data-lang="ru">Галерея работ</span>
+                    <span data-lang="en">Gallery</span>
+                </h2>
+            </div>
+            <div class="gallery-grid" data-aos="fade-up">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800" alt="Nail work 1"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=400" alt="Nail work 2"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=400" alt="Nail work 3"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=400" alt="Nail work 4"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1571290274554-6a2eaa771e5f?w=400" alt="Nail work 5"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1610992015732-2449b0dd2b8b?w=400" alt="Nail work 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Section -->
+    <section class="section beforeafter-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <span data-lang="ru">Результаты</span>
+                    <span data-lang="en">Results</span>
+                </div>
+                <h2 class="section-title">
+                    <span data-lang="ru">До и После</span>
+                    <span data-lang="en">Before & After</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span data-lang="ru">Двигайте слайдер, чтобы увидеть разницу</span>
+                    <span data-lang="en">Drag the slider to see the difference</span>
+                </p>
+            </div>
+            <div class="beforeafter-grid">
+                <div class="beforeafter-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="beforeafter-slider" id="slider1">
+                        <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800" alt="Before" class="before-img">
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800" alt="After" class="after-img">
+                        <div class="slider-handle"></div>
+                        <div class="beforeafter-labels">
+                            <span class="beforeafter-label">
+                                <span data-lang="ru">До</span>
+                                <span data-lang="en">Before</span>
+                            </span>
+                            <span class="beforeafter-label">
+                                <span data-lang="ru">После</span>
+                                <span data-lang="en">After</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="beforeafter-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="beforeafter-slider" id="slider2">
+                        <img src="https://images.unsplash.com/photo-1571290274554-6a2eaa771e5f?w=800" alt="Before" class="before-img">
+                        <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=800" alt="After" class="after-img">
+                        <div class="slider-handle"></div>
+                        <div class="beforeafter-labels">
+                            <span class="beforeafter-label">
+                                <span data-lang="ru">До</span>
+                                <span data-lang="en">Before</span>
+                            </span>
+                            <span class="beforeafter-label">
+                                <span data-lang="ru">После</span>
+                                <span data-lang="en">After</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <span data-lang="ru">График работы</span>
+                    <span data-lang="en">Business Hours</span>
+                </div>
+                <h2 class="section-title">
+                    <span data-lang="ru">Мы открыты для вас</span>
+                    <span data-lang="en">We're Open For You</span>
+                </h2>
+            </div>
+            <div class="hours-container" data-aos="fade-up">
+                <div class="hours-grid">
+                    <div class="hours-row">
+                        <span class="day-name"><span data-lang="ru">Понедельник</span><span data-lang="en">Monday</span></span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name"><span data-lang="ru">Вторник</span><span data-lang="en">Tuesday</span></span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name"><span data-lang="ru">Среда</span><span data-lang="en">Wednesday</span></span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name"><span data-lang="ru">Четверг</span><span data-lang="en">Thursday</span></span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name"><span data-lang="ru">Пятница</span><span data-lang="en">Friday</span></span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name"><span data-lang="ru">Суббота</span><span data-lang="en">Saturday</span></span>
+                        <span class="day-hours">9:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="day-name"><span data-lang="ru">Воскресенье</span><span data-lang="en">Sunday</span></span>
+                        <span class="day-closed"><span data-lang="ru">Закрыто</span><span data-lang="en">Closed</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <span data-lang="ru">Отзывы клиентов</span>
+                    <span data-lang="en">Customer Reviews</span>
+                </div>
+                <h2 class="section-title">
+                    <span data-lang="ru">Что говорят наши клиенты</span>
+                    <span data-lang="en">What Our Clients Say</span>
+                </h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Best nail salon in the area! Professional service every time."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">M</div>
+                        <div>
+                            <div class="author-name">Maria K.</div>
+                            <div class="review-date">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Лучший салон в районе! Всегда довольна результатом."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">S</div>
+                        <div>
+                            <div class="author-name">Svetlana R.</div>
+                            <div class="review-date">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Great quality and reasonable prices. Highly recommend!"</p>
+                    <div class="review-author">
+                        <div class="author-avatar">A</div>
+                        <div>
+                            <div class="author-name">Anna P.</div>
+                            <div class="review-date">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Clean salon, friendly staff. My go-to place!"</p>
+                    <div class="review-author">
+                        <div class="author-avatar">I</div>
+                        <div>
+                            <div class="author-name">Irina M.</div>
+                            <div class="review-date">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Отличная работа мастеров! Всем рекомендую."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">E</div>
+                        <div>
+                            <div class="author-name">Elena V.</div>
+                            <div class="review-date">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Amazing nail art! They can do any design you want."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">J</div>
+                        <div>
+                            <div class="author-name">Jessica L.</div>
+                            <div class="review-date">Google Review</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-link" data-aos="fade-up">
+                <a href="#" class="btn-reviews">
+                    <i class="fas fa-star"></i>
+                    <span data-lang="ru">Посмотреть все 35 отзыва на Google</span>
+                    <span data-lang="en">See all 35 reviews on Google</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <span data-lang="ru">Как нас найти</span>
+                    <span data-lang="en">Find Us</span>
+                </div>
+                <h2 class="section-title">
+                    <span data-lang="ru">Приходите к нам</span>
+                    <span data-lang="en">Visit Us</span>
+                </h2>
+            </div>
+            <div class="location-grid">
+                <div class="location-info" data-aos="fade-right">
+                    <h3>
+                        <span data-lang="ru">Наш адрес</span>
+                        <span data-lang="en">Our Location</span>
+                    </h3>
+                    <div class="location-details">
+                        <div class="location-item">
+                            <div class="location-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <div class="location-item-label">
+                                    <span data-lang="ru">Адрес</span>
+                                    <span data-lang="en">Address</span>
+                                </div>
+                                <div class="location-item-value">76 W Brighton Ave<br>Suite C-209, C-210<br>Jackson Heights, New York 11372</div>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <div class="location-item-icon"><i class="fas fa-subway"></i></div>
+                            <div>
+                                <div class="location-item-label">
+                                    <span data-lang="ru">Транспорт</span>
+                                    <span data-lang="en">Transportation</span>
+                                </div>
+                                <div class="location-item-value">
+                                    <span data-lang="ru">Рядом со станциями B и Q<br>Парковка рядом</span>
+                                    <span data-lang="en">Near B and Q stations<br>Street parking available</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <div class="location-item-icon"><i class="fas fa-walking"></i></div>
+                            <div>
+                                <div class="location-item-label">Walk-ins</div>
+                                <div class="location-item-value">
+                                    <span data-lang="ru">Принимаем без записи!</span>
+                                    <span data-lang="en">No appointment needed!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container" data-aos="fade-left">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.3!2d-73.8734604!3d40.7510353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z40.7510353%2C-73.8734604!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-banner" data-aos="zoom-in">
+                <div class="cta-content">
+                    <h2>
+                        <span data-lang="ru">Готовы к красивым ногтям?</span>
+                        <span data-lang="en">Ready for Beautiful Nails?</span>
+                    </h2>
+                    <p>
+                        <span data-lang="ru">Запишитесь на приём уже сегодня!</span>
+                        <span data-lang="en">Book your appointment today!</span>
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-book" onclick="openModal()">
+                            <i class="fas fa-calendar-check"></i>
+                            <span data-lang="ru">Записаться онлайн</span>
+                            <span data-lang="en">Book Online</span>
+                        </button>
+                        <a href="tel:+117184266066" class="btn btn-primary">
+                            <i class="fas fa-phone"></i>
+                            <span>(718) 426-6066</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Sistar Nail & Spa</h3>
+                <p>
+                    <span data-lang="ru">Профессиональный nail салон в Brighton Beach.</span>
+                    <span data-lang="en">Professional nail salon in Brighton Beach.</span>
+                </p>
+                <div class="footer-social">
+                    <a href="https://wa.me/117184266066" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>
+                    <span data-lang="ru">Услуги</span>
+                    <span data-lang="en">Services</span>
+                </h4>
+                <ul>
+                    <li><a href="#services"><span data-lang="ru">Маникюр</span><span data-lang="en">Manicure</span></a></li>
+                    <li><a href="#services"><span data-lang="ru">Педикюр</span><span data-lang="en">Pedicure</span></a></li>
+                    <li><a href="#services"><span data-lang="ru">Дизайн ногтей</span><span data-lang="en">Nail Art</span></a></li>
+                    <li><a href="#services"><span data-lang="ru">Наращивание</span><span data-lang="en">Extensions</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>
+                    <span data-lang="ru">Контакты</span>
+                    <span data-lang="en">Contact</span>
+                </h4>
+                <ul>
+                    <li><a href="tel:+117184266066">(718) 426-6066</a></li>
+                    <li><a href="#">76 W Brighton Ave</a></li>
+                    <li><a href="#">Jackson Heights, New York 11372</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span data-lang="ru">© 2026 Sistar Nail & Spa. Все права защищены.</span>
+            <span data-lang="en">© 2026 Sistar Nail & Spa. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3>
+                <span data-lang="ru">Онлайн запись</span>
+                <span data-lang="en">Book Appointment</span>
+            </h3>
+            <p>
+                <span data-lang="ru">Заполните форму и мы свяжемся с вами</span>
+                <span data-lang="en">Fill out the form and we'll contact you</span>
+            </p>
+            <form class="modal-form" onsubmit="submitForm(event)">
+                <input type="text" placeholder="Ваше имя / Your name" required>
+                <input type="tel" placeholder="Телефон / Phone" required>
+                <select required>
+                    <option value="" disabled selected>Выберите услугу / Select service</option>
+                    <option value="manicure">Маникюр / Manicure</option>
+                    <option value="pedicure">Педикюр / Pedicure</option>
+                    <option value="nailart">Дизайн / Nail Art</option>
+                    <option value="extensions">Наращивание / Extensions</option>
+                </select>
+                <input type="date" required>
+                <button type="submit">
+                    <span data-lang="ru">Отправить заявку</span>
+                    <span data-lang="en">Submit Request</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 50 });
+
+        // Language Switcher
+        function setLang(lang) {
+            if (lang === 'en') {
+                document.body.classList.add('lang-en');
+            } else {
+                document.body.classList.remove('lang-en');
+            }
+            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferred-lang') || 'ru';
+            setLang(savedLang);
+            initCounters();
+            initSliders();
+        });
+
+        // Counter Animation
+        function initCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = +counter.getAttribute('data-count');
+                        const increment = target / 100;
+                        const updateCount = () => {
+                            const count = +counter.innerText;
+                            if (count < target) {
+                                counter.innerText = Math.ceil(count + increment);
+                                setTimeout(updateCount, 10);
+                            } else {
+                                counter.innerText = target + '+';
+                            }
+                        };
+                        updateCount();
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // Before/After Slider
+        function initSliders() {
+            document.querySelectorAll('.beforeafter-slider').forEach(slider => {
+                const handle = slider.querySelector('.slider-handle');
+                const afterImg = slider.querySelector('.after-img');
+                let isDragging = false;
+
+                const updateSlider = (x) => {
+                    const rect = slider.getBoundingClientRect();
+                    let percentage = ((x - rect.left) / rect.width) * 100;
+                    percentage = Math.max(0, Math.min(100, percentage));
+                    handle.style.left = percentage + '%';
+                    afterImg.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+                };
+
+                slider.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
+                document.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
+                document.addEventListener('mouseup', () => { isDragging = false; });
+                slider.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); });
+                slider.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); });
+                slider.addEventListener('touchend', () => { isDragging = false; });
+            });
+        }
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('bookingModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            alert(document.body.classList.contains('lang-en') ? 'Thank you! We will contact you soon.' : 'Спасибо! Мы свяжемся с вами в ближайшее время.');
+            closeModal();
+        }
+
+        document.getElementById('bookingModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+    </script>
+</body>
+</html>
